@@ -1,17 +1,6 @@
+server:
+  contextPath: /admin
 spring:
-  profiles: insecure
-
-management:
-  security:
-    enabled: false
-
-security:
-  basic:
-    enabled: false
-
----
-spring:
-  profiles: secure
   boot:
     monitor:
         period: 30000
@@ -25,13 +14,22 @@ spring:
       client:
         simple:
           instances:
-            test:
-              - uri: http://instance1.intern:8080
+            mobility:
+              - uri: http://localhost:7011
                 metadata:
-                  management.context-path: /actuator
-              - uri: http://instance2.intern:8080
+                  management.context-path: /manage
+            gamification:
+              - uri: http://localhost:9000
                 metadata:
-                  management.context-path: /actuator
+                  management.context-path: /manage
+            climb:
+              - uri: http://localhost:6021
+                metadata:
+                  management.context-path: /manage
+
+management:
+  security:
+    enabled: true
 security:
   user:
     name: user

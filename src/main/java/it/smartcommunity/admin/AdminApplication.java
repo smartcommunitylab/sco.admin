@@ -20,8 +20,6 @@ public class AdminApplication {
 	}
 	
 
-	@Profile("secure")
-	// tag::configuration-spring-security[]
 	@Configuration
 	public static class SecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
@@ -44,5 +42,4 @@ public class AdminApplication {
 			http.httpBasic();
 		}
 	}
-	// end::configuration-spring-security[]
 }
