@@ -1,0 +1,38 @@
+spring:
+  profiles: insecure
+
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
+
+---
+spring:
+  profiles: secure
+  boot:
+    monitor:
+        period: 30000
+        status-lifetime: 30000
+        connect-timeout: 5000
+    admin:
+      username: "${security.user.name}"       #These two are needed so that the client
+      password: "${security.user.password}"   #can register at the protected server api
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            test:
+              - uri: http://instance1.intern:8080
+                metadata:
+                  management.context-path: /actuator
+              - uri: http://instance2.intern:8080
+                metadata:
+                  management.context-path: /actuator
+security:
+  user:
+    name: user
+    password: pass
