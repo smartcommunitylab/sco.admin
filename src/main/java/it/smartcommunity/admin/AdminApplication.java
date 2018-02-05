@@ -67,7 +67,7 @@ public class AdminApplication {
 	    @Primary
 	    public RemindingNotifier remindingNotifier() {
 	        RemindingNotifier remindingNotifier = new RemindingNotifier(notifier);
-	        remindingNotifier.setReminderPeriod(TimeUnit.MINUTES.toMillis(5)); 
+	        remindingNotifier.setReminderPeriod(TimeUnit.MINUTES.toMillis(10)); 
 	        return remindingNotifier;
 	    }
 
