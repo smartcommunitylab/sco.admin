@@ -17,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import de.codecentric.boot.admin.config.EnableAdminServer;
 import de.codecentric.boot.admin.notify.Notifier;
 import de.codecentric.boot.admin.notify.RemindingNotifier;
+import de.codecentric.boot.admin.notify.filter.FilteringNotifier;
 
 @SpringBootApplication
 @EnableAutoConfiguration
@@ -57,6 +58,11 @@ public class AdminApplication {
 	    @Autowired
 	    private Notifier notifier;
 
+	    @Bean
+	    public FilteringNotifier filteringNotifier() { 
+	      return new FilteringNotifier(notifier);
+	    }
+	    
 	    @Bean
 	    @Primary
 	    public RemindingNotifier remindingNotifier() {
