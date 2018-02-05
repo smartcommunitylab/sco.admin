@@ -1,6 +1,13 @@
 server:
   contextPath: /admin
 spring:
+  mail:
+    username: info@smartcommunitylab.it
+    password: password
+    host: smtp.smartcommunitylab.it
+    port: 465
+    protocol: smtps    
+
   boot:
     monitor:
         period: 30000
@@ -9,6 +16,9 @@ spring:
     admin:
       username: "${security.user.name}"       #These two are needed so that the client
       password: "${security.user.password}"   #can register at the protected server api
+      notify:
+        mail:
+          to: recepient@example.com
   cloud:
     discovery:
       client:
@@ -34,3 +44,4 @@ security:
   user:
     name: user
     password: pass
+    
