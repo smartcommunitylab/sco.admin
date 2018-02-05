@@ -19,6 +19,7 @@ spring:
       notify:
         mail:
           to: recepient@example.com
+          from : admin@smartcommunitylab.it
   cloud:
     discovery:
       client:
